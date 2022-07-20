@@ -15,6 +15,16 @@ You want to grab the current time first then add the past time rule. This will h
 3. Query Guided Mode Role and Parse Agents
 Now you want to make an API call to the Custom Role that the Agents use for Guided Mode. Select the body from the previous role and add your schema. (Schemas are uploaded here if you want to use them)
 
+- URI: https://{subdomain}.zendesk.com/api/v2/users?permission_set={CustomRoleID}&page[size]=100
+    - Subdomain: This would be your Subdomain that you created with Zendesk
+    - CustomRoleID: The ID is located in the URL when you [modify the Custom Role](https://support.zendesk.com/hc/en-us/articles/4408832292506-Managing-custom-roles)
+- Headers
+    - Content-Type: application/json
+    - Accept: application/json
+- Authentication: Basic
+- Username: {YourZendesk Email}/token
+- Password: {YourAPIKey}
+
 ![Step3a](images/Step3a.png)
 ![Step3b](images/Step3b.png)
 
@@ -24,6 +34,16 @@ Now you want to make an API call to the Custom Role that the Agents use for Guid
 
 5. Run For Each User
 This is where you will be grabbing the most data for the skipped tickets. Create another HTTP GET which will run for each User ID detected in Step 3. After you will need to parse the output once again. (Schemas are uploaded here if you want to use them)
+
+- URI: https://{subdomain}.zendesk.com/api/v2/users/@{items('Run_For_Each_User')?['id']}/skips.json?page[size]=100
+    - Subdomain: This would be your Subdomain that you created with Zendesk
+    - id: You want to select the id dynamic content from the Parsing Agent step
+- Headers
+    - Content-Type: application/json
+    - Accept: application/json
+- Authentication: Basic
+- Username: {YourZendesk Email}/token
+- Password: {YourAPIKey}
 
 ![Step5](images/Step5.png)
 
