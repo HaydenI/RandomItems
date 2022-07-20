@@ -1,0 +1,197 @@
+{
+    "type": "object",
+    "properties": {
+        "skips": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "ticket_id": {
+                        "type": "integer"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "reason": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    },
+                    "ticket": {
+                        "type": "object",
+                        "properties": {
+                            "url": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "integer"
+                            },
+                            "external_id": {},
+                            "via": {
+                                "type": "object",
+                                "properties": {
+                                    "channel": {
+                                        "type": "string"
+                                    },
+                                    "source": {
+                                        "type": "object",
+                                        "properties": {
+                                            "from": {
+                                                "type": "object",
+                                                "properties": {}
+                                            },
+                                            "to": {
+                                                "type": "object",
+                                                "properties": {}
+                                            },
+                                            "rel": {}
+                                        }
+                                    }
+                                }
+                            },
+                            "created_at": {
+                                "type": "string"
+                            },
+                            "updated_at": {
+                                "type": "string"
+                            },
+                            "type": {},
+                            "subject": {
+                                "type": "string"
+                            },
+                            "raw_subject": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "priority": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "string"
+                            },
+                            "recipient": {},
+                            "requester_id": {
+                                "type": "integer"
+                            },
+                            "submitter_id": {
+                                "type": "integer"
+                            },
+                            "assignee_id": {},
+                            "organization_id": {
+                                "type": "integer"
+                            },
+                            "group_id": {
+                                "type": "integer"
+                            },
+                            "collaborator_ids": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            "follower_ids": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            "email_cc_ids": {
+                                "type": "array"
+                            },
+                            "forum_topic_id": {},
+                            "problem_id": {},
+                            "has_incidents": {
+                                "type": "boolean"
+                            },
+                            "is_public": {
+                                "type": "boolean"
+                            },
+                            "due_at": {},
+                            "tags": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "custom_fields": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "value": {}
+                                    },
+                                    "required": [
+                                        "id",
+                                        "value"
+                                    ]
+                                }
+                            },
+                            "satisfaction_rating": {},
+                            "sharing_agreement_ids": {
+                                "type": "array"
+                            },
+                            "fields": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "value": {}
+                                    },
+                                    "required": [
+                                        "id",
+                                        "value"
+                                    ]
+                                }
+                            },
+                            "followup_ids": {
+                                "type": "array"
+                            },
+                            "ticket_form_id": {
+                                "type": "integer"
+                            },
+                            "deleted_ticket_form_id": {},
+                            "brand_id": {
+                                "type": "integer"
+                            },
+                            "allow_channelback": {
+                                "type": "boolean"
+                            },
+                            "allow_attachments": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "id",
+                    "ticket_id",
+                    "user_id",
+                    "reason",
+                    "created_at",
+                    "updated_at",
+                    "ticket"
+                ]
+            }
+        },
+        "next_page": {},
+        "previous_page": {},
+        "count": {
+            "type": "integer"
+        }
+    }
+}

@@ -1,0 +1,174 @@
+{
+    "type": "object",
+    "properties": {
+        "users": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    },
+                    "time_zone": {
+                        "type": "string"
+                    },
+                    "iana_time_zone": {
+                        "type": "string"
+                    },
+                    "phone": {},
+                    "shared_phone_number": {},
+                    "photo": {},
+                    "locale_id": {
+                        "type": "integer"
+                    },
+                    "locale": {
+                        "type": "string"
+                    },
+                    "organization_id": {
+                        "type": "integer"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "verified": {
+                        "type": "boolean"
+                    },
+                    "external_id": {},
+                    "tags": {
+                        "type": "array"
+                    },
+                    "alias": {
+                        "type": "string"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "shared": {
+                        "type": "boolean"
+                    },
+                    "shared_agent": {
+                        "type": "boolean"
+                    },
+                    "last_login_at": {
+                        "type": "string"
+                    },
+                    "two_factor_auth_enabled": {},
+                    "signature": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "string"
+                    },
+                    "notes": {
+                        "type": "string"
+                    },
+                    "role_type": {
+                        "type": "integer"
+                    },
+                    "custom_role_id": {
+                        "type": "integer"
+                    },
+                    "moderator": {
+                        "type": "boolean"
+                    },
+                    "ticket_restriction": {
+                        "type": "string"
+                    },
+                    "only_private_comments": {
+                        "type": "boolean"
+                    },
+                    "restricted_agent": {
+                        "type": "boolean"
+                    },
+                    "suspended": {
+                        "type": "boolean"
+                    },
+                    "default_group_id": {
+                        "type": "integer"
+                    },
+                    "report_csv": {
+                        "type": "boolean"
+                    },
+                    "user_fields": {
+                        "type": "object",
+                        "properties": {
+                            "agent_ooo": {
+                                "type": "boolean"
+                            },
+                            "department": {},
+                            "employee_id": {},
+                            "location": {},
+                            "sfdepartment": {},
+                            "sfdivision": {},
+                            "sflocation": {},
+                            "supervisor": {},
+                            "title": {},
+                            "truemerald_eligible": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "id",
+                    "url",
+                    "name",
+                    "email",
+                    "created_at",
+                    "updated_at",
+                    "time_zone",
+                    "iana_time_zone",
+                    "phone",
+                    "shared_phone_number",
+                    "photo",
+                    "locale_id",
+                    "locale",
+                    "organization_id",
+                    "role",
+                    "verified",
+                    "external_id",
+                    "tags",
+                    "alias",
+                    "active",
+                    "shared",
+                    "shared_agent",
+                    "last_login_at",
+                    "two_factor_auth_enabled",
+                    "signature",
+                    "details",
+                    "notes",
+                    "role_type",
+                    "custom_role_id",
+                    "moderator",
+                    "ticket_restriction",
+                    "only_private_comments",
+                    "restricted_agent",
+                    "suspended",
+                    "default_group_id",
+                    "report_csv",
+                    "user_fields"
+                ]
+            }
+        },
+        "next_page": {},
+        "previous_page": {},
+        "count": {
+            "type": "integer"
+        }
+    }
+}
