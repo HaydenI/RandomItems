@@ -15,9 +15,9 @@ When it comes to working with a company that is national, some people will forge
 3. Query Current Team Status and Parse The Body
     - Make an API call to Sharepoint to GET your current status. We will be doing this to detect when you are Out Of Office. For the schema, refer to the folder for an example.
 
-    - Site Address: https://presence.teams.microsoft.com
-    - Method: GET
-    - Uri: /v1/me/presence
+        - Site Address: https://presence.teams.microsoft.com
+        - Method: GET
+        - Uri: /v1/me/presence
 
 ![Step3](images/Step3.png)
 
@@ -28,13 +28,13 @@ When it comes to working with a company that is national, some people will forge
 5. Set Status When Not Out Of Office
     - Finally you will create a condition that if we are not Out Of Office, Teams will set the status message.
 
-    - Site Address: https://presence.teams.microsoft.com
-    - Method: PUT
-    - Uri: /v1/me/presence
-    - Headers:
-        - Content-Type: application/json
-    - Body:
-        - `{
+        - Site Address: https://presence.teams.microsoft.com
+        - Method: PUT
+        - Uri: /v1/me/presence
+        - Headers:
+            - Content-Type: application/json
+        - Body:
+            - `{
             "message": "Hello! I am located on the West Coast and am not in the office till 8am AZ unless I am Out Of Office.<pinnednote></pinnednote>",
             "expiry": "@{body('Add_4_Hours_To_Current_Time')}"
             }`
