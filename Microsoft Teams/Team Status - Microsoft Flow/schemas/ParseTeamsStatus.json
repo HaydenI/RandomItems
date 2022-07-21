@@ -1,0 +1,115 @@
+{
+    "type": "object",
+    "properties": {
+        "statusCode": {
+            "type": "integer"
+        },
+        "headers": {
+            "type": "object",
+            "properties": {
+                "Pragma": {
+                    "type": "string"
+                },
+                "Transfer-Encoding": {
+                    "type": "string"
+                },
+                "Vary": {
+                    "type": "string"
+                },
+                "x-ms-correlation-id": {
+                    "type": "string"
+                },
+                "Access-Control-Expose-Headers": {
+                    "type": "string"
+                },
+                "x-ms-request-id": {
+                    "type": "string"
+                },
+                "Strict-Transport-Security": {
+                    "type": "string"
+                },
+                "X-Content-Type-Options": {
+                    "type": "string"
+                },
+                "X-Frame-Options": {
+                    "type": "string"
+                },
+                "Cache-Control": {
+                    "type": "string"
+                },
+                "Set-Cookie": {
+                    "type": "string"
+                },
+                "Timing-Allow-Origin": {
+                    "type": "string"
+                },
+                "x-ms-apihub-cached-response": {
+                    "type": "string"
+                },
+                "x-ms-apihub-obo": {
+                    "type": "string"
+                },
+                "Date": {
+                    "type": "string"
+                },
+                "Content-Type": {
+                    "type": "string"
+                },
+                "Expires": {
+                    "type": "string"
+                },
+                "Content-Length": {
+                    "type": "string"
+                }
+            }
+        },
+        "body": {
+            "type": "object",
+            "properties": {
+                "note": {
+                    "type": "object",
+                    "properties": {
+                        "message": {
+                            "type": "string"
+                        },
+                        "publishTime": {
+                            "type": "string"
+                        },
+                        "expiry": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "calendarData": {
+                    "type": "object",
+                    "properties": {
+                        "isOutOfOffice": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "capabilities": {
+                    "type": "array"
+                },
+                "availability": {
+                    "type": "string"
+                },
+                "activity": {
+                    "type": "string"
+                },
+                "lastActiveTime": {
+                    "type": "string"
+                },
+                "nextRefreshTime": {
+                    "type": "string"
+                },
+                "deviceType": {
+                    "type": "string"
+                },
+                "sequenceNumber": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}
