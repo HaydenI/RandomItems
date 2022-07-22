@@ -40,3 +40,9 @@ When it comes to working with a company that is national, some people will forge
             }`
 
 ![Step5](images/Step5.png)
+
+
+
+# Full Power Automate
+***
+![FullFlow](images/FullFlow.png)
