@@ -1,4 +1,4 @@
-# Automated Email On Skipped Tickets Using Microsoft Flow (Power Automate)
+# Automated Email On Skipped Tickets Using Power Automate
 ***
 Zendesk does not offer a built-in way to view skipped tickets for Agents. Only Admins can view them. I have created a way that uses Microsoft Flow. In summary, it queries who is assigned the Guided View role, then for each user it reads the skips from the previous 7 days, creates an array from them, then fires off an email with the HTML table embedded.
 
@@ -56,3 +56,9 @@ Zendesk does not offer a built-in way to view skipped tickets for Agents. Only A
     - Bingo. Simple as that.
 
 ![Step7](images/Step7.png)
+
+
+
+# Full Power Automate
+***
+![FullFlow](images/FullFlow.png)
