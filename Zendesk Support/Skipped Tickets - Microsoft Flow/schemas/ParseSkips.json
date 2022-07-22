@@ -16,7 +16,10 @@
                         "type": "integer"
                     },
                     "reason": {
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "created_at": {
                         "type": "string"
@@ -86,9 +89,6 @@
                                 "type": "integer"
                             },
                             "assignee_id": {},
-                            "organization_id": {
-                                "type": "integer"
-                            },
                             "group_id": {
                                 "type": "integer"
                             },
