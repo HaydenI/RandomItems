@@ -1,0 +1,44 @@
+{
+    "type": "object",
+    "properties": {
+        "results": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "timestamp": {
+                        "type": "string"
+                    },
+                    "preview": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "timestamp",
+                    "preview",
+                    "url",
+                    "type"
+                ]
+            }
+        },
+        "count": {
+            "type": "integer"
+        },
+        "next_url": {
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    }
+}

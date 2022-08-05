@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "properties": {
+        "visitor": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "phone": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "email": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "rating": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "comment": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "end_timestamp": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "zendesk_ticket_id": {
+            "type": "integer"
+        }
+    }
+}
