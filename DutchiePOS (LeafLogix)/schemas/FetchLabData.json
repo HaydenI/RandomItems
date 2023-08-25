@@ -1,0 +1,9 @@
+/* This JSON body is to fetch lab results from METRC in DutchiePOS. Can be called via POST to https://XXXX.backoffice.dutchie.com/api/v2/lab/fetch Recommended to use Postman when using this JSON body */
+{
+    "PackageId": {{PackageId}},
+    "BatchId": {{BatchId}},
+    "SessionId": {{SessionId}},
+    "LspId": {{LspId}},
+    "LocId": {{LocId}},
+    "UserId": {{UserId}}
+}

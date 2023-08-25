@@ -1,0 +1,13 @@
+/* This JSON body is to update a printer in DutchiePOS. Can be called via POST to https://XXXX.backoffice.dutchie.com/api/posv3/print/update-printer Recommended to use Postman when using this JSON body */
+{
+    "printerId": {{printerId}},
+    "name": "{{printerName}}",
+    "type": "{{printerType}}",
+    "isReceiptPrinter": {{isReceiptPrinter}},
+    "isLabelPrinter": {{isLabelPrinter}},
+    "isHidden": false,
+    "SessionId": {{SessionId}},
+    "LspId": {{LspId}},
+    "LocId": {{LocId}},
+    "UserId": {{UserId}}
+}
