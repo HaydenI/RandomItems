@@ -1,0 +1,1 @@
+﻿(net localgroup administrators) -like 'AzureAD*' | ForEach-Object { net localgroup administrators $_ /DELETE }
