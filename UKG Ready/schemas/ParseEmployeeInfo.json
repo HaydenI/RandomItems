@@ -1,0 +1,241 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "employee_id": {
+            "type": "string"
+        },
+        "username": {
+            "type": "string"
+        },
+        "first_name": {
+            "type": "string"
+        },
+        "last_name": {
+            "type": "string"
+        },
+        "primary_account_id": {
+            "type": "integer"
+        },
+        "ein_name": {
+            "type": "string"
+        },
+        "_links": {
+            "type": "object",
+            "properties": {
+                "self": {
+                    "type": "string"
+                },
+                "demographics": {
+                    "type": "string"
+                },
+                "profiles": {
+                    "type": "string"
+                }
+            }
+        },
+        "photo_href": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string"
+        },
+        "locked": {
+            "type": "boolean"
+        },
+        "force_change_password": {
+            "type": "boolean"
+        },
+        "primary_email": {
+            "type": "string"
+        },
+        "social_security": {
+            "type": "string"
+        },
+        "first_screen": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "address": {
+            "type": "object",
+            "properties": {
+                "address_line_1": {
+                    "type": "string"
+                },
+                "address_line_2": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zip": {
+                    "type": "string"
+                }
+            }
+        },
+        "use_separate_mailing_address": {
+            "type": "boolean"
+        },
+        "timezone": {
+            "type": "string"
+        },
+        "phones": {
+            "type": "object",
+            "properties": {
+                "cell_phone_country_id": {
+                    "type": "string"
+                },
+                "cell_phone_country_code": {
+                    "type": "string"
+                },
+                "cell_phone": {
+                    "type": "string"
+                },
+                "home_phone_country_id": {
+                    "type": "string"
+                },
+                "home_phone_country_code": {
+                    "type": "string"
+                },
+                "work_phone_country_id": {
+                    "type": "string"
+                },
+                "work_phone_country_code": {
+                    "type": "string"
+                },
+                "preferred_phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "dates": {
+            "type": "object",
+            "properties": {
+                "hired": {
+                    "type": "string"
+                },
+                "started": {
+                    "type": "string"
+                },
+                "birthday": {
+                    "type": "string"
+                }
+            }
+        },
+        "managers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "index": {
+                        "type": "integer"
+                    },
+                    "empl_ref": {
+                        "type": "object",
+                        "properties": {
+                            "account_id": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "index",
+                    "empl_ref"
+                ]
+            }
+        },
+        "cost_centers_info": {
+            "type": "object",
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "index": {
+                                "type": "integer"
+                            },
+                            "value": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "required": [
+                            "index",
+                            "value"
+                        ]
+                    }
+                }
+            }
+        },
+        "ein": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "add_to_new_hire_export": {
+            "type": "boolean"
+        },
+        "hardware_settings": {
+            "type": "object",
+            "properties": {
+                "in_touch": {
+                    "type": "object",
+                    "properties": {
+                        "security_level": {
+                            "type": "string"
+                        },
+                        "pin": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "managed_cost_centers_enabled": {
+            "type": "boolean"
+        },
+        "national_id_numbers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    },
+                    "primary": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "type",
+                    "value",
+                    "primary"
+                ]
+            }
+        }
+    }
+}

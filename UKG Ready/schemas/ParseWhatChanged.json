@@ -1,0 +1,64 @@
+{
+    "type": "object",
+    "properties": {
+        "entries": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "object": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "employee_id": {
+                                "type": "string"
+                            },
+                            "username": {
+                                "type": "string"
+                            },
+                            "first_name": {
+                                "type": "string"
+                            },
+                            "last_name": {
+                                "type": "string"
+                            },
+                            "primary_account_id": {
+                                "type": "integer"
+                            },
+                            "ein_name": {
+                                "type": "string"
+                            },
+                            "_links": {
+                                "type": "object",
+                                "properties": {
+                                    "self": {
+                                        "type": "string"
+                                    },
+                                    "pay_info": {
+                                        "type": "string"
+                                    },
+                                    "profiles": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "object",
+                    "status"
+                ]
+            }
+        }
+    }
+}

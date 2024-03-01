@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "token": {
+            "type": "string"
+        },
+        "ttl": {
+            "type": "integer"
+        },
+        "units": {
+            "type": "string"
+        }
+    }
+}
