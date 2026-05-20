@@ -1,0 +1,6 @@
+.env
+UpdateUsers*.txt
+*.log
+__pycache__/
+*.pyc
+*.pyo

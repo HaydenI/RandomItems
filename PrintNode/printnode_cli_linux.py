@@ -25,24 +25,30 @@ printnode_init='/etc/init.d/PrintNode'
 ## Todo - add cli option for displaying current config? 
 ## Including ability to show current printer IDs easily
 
-q = [
-        {
-            'type': 'input',
-            'name': 'account_email',
-            'message': 'Please enter the PrintNode account username: '
-        },
-        {
-            'type': 'input',
-            'name': 'account_password',
-            'message': 'Please enter the PrintNode account password: '
-            }
-        ,
-        {
-            'type': 'input',
-            'name': 'computer_name',
-            'message': 'Please enter the location (computer name override): '
-            }
-        ]
+q = []
+env_email = os.environ.get('PRINTNODE_EMAIL')
+env_password = os.environ.get('PRINTNODE_PASSWORD')
+env_computer_name = os.environ.get('PRINTNODE_COMPUTER_NAME')
+
+if not env_email:
+    q.append({
+        'type': 'input',
+        'name': 'account_email',
+        'message': 'Please enter the PrintNode account username: '
+    })
+if not env_password:
+    q.append({
+        'type': 'password',  # Mask input typing for password
+        'name': 'account_password',
+        'message': 'Please enter the PrintNode account password: '
+    })
+if not env_computer_name:
+    q.append({
+        'type': 'input',
+        'name': 'computer_name',
+        'message': 'Please enter the location (computer name override): '
+    })
+
 qConfirm = [{ 'type': 'confirm', 'name': 'confirm_result', 'message': 'Are these values correct? ', 'default': False}]
 
 
@@ -63,21 +69,38 @@ if len(cp.sections()) <= 0:
     click.echo(click.style("ERROR: Cannot open " + printnode_config, fg='red', underline=True, bold=True))
     sys.exit(1)
 
-ans=prompt(q)
+ans = {}
+if q:
+    ans = prompt(q)
+    # Merge interactive answers with environment variables if any was skipped
+    if 'account_email' not in ans and env_email:
+        ans['account_email'] = env_email
+    if 'account_password' not in ans and env_password:
+        ans['account_password'] = env_password
+    if 'computer_name' not in ans and env_computer_name:
+        ans['computer_name'] = env_computer_name
+else:
+    ans['account_email'] = env_email
+    ans['account_password'] = env_password
+    ans['computer_name'] = env_computer_name
 
-click.echo("")
-click.echo("\t\t" + click.style("Account Username:", fg='bright_white', underline=True) + "\t\t" + click.style(ans['account_email'], fg='green', bold=True))
-click.echo("\t\t" + click.style("Account Password:", fg='bright_white', underline=True) + "\t\t" + click.style(ans['account_password'], fg='green', bold=True))
-click.echo("\t\t" + click.style("Computer Name/Location:", fg='bright_white', underline=True) + "\t\t" + click.style(ans['computer_name'], fg='yellow', bold=True))
-#print("Account Password: " + ans['account_password'])
-#print("Computer Name/Location: " + ans['computer_name'])
-click.echo("")
-click.echo("")
-proceed=prompt(qConfirm)
+# If any values were gathered interactively, print them (masking the password) and ask for confirmation.
+is_interactive = len(q) > 0
 
-if proceed['confirm_result'] != True:
-    click.echo(click.style("Cancelling changes... exiting.", fg='yellow'))
-    sys.exit(2)
+if is_interactive:
+    click.echo("")
+    click.echo("\t\t" + click.style("Account Username:", fg='bright_white', underline=True) + "\t\t" + click.style(ans.get('account_email', ''), fg='green', bold=True))
+    click.echo("\t\t" + click.style("Account Password:", fg='bright_white', underline=True) + "\t\t" + click.style("********", fg='green', bold=True))
+    click.echo("\t\t" + click.style("Computer Name/Location:", fg='bright_white', underline=True) + "\t\t" + click.style(ans.get('computer_name', ''), fg='yellow', bold=True))
+    click.echo("")
+    click.echo("")
+    proceed=prompt(qConfirm)
+
+    if proceed.get('confirm_result') != True:
+        click.echo(click.style("Cancelling changes... exiting.", fg='yellow'))
+        sys.exit(2)
+else:
+    click.echo(click.style("Loaded all configuration values from environment variables.", fg='green'))
 
 if checkPrintNodeRunning():
     shutReturn = sp.call(['systemctl', 'stop', 'PrintNodeRec'])
@@ -101,6 +124,13 @@ fOut=open(printnode_config, 'w')
 cp.write(fOut)
 
 fOut.close()
+
+# Secure configuration file permissions (chmod 600) so only the owner can read/write it
+try:
+    os.chmod(printnode_config, 0o600)
+    click.echo(click.style("Secured configuration file permissions (chmod 600)", fg='green'))
+except Exception as e:
+    click.echo(click.style(f"Notice: Could not set file permissions (chmod 600) on config file: {e}", fg='yellow'))
 
 click.echo(click.style("Wrote configuration to " + printnode_config, fg='green'))
 

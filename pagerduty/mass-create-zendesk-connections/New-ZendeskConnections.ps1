@@ -1,7 +1,22 @@
 param($csv_file)
 
+# Retrieve PagerDuty Bearer Token and Zendesk Extension ID from environment variables
+$bearer = $env:PAGERDUTY_BEARER_TOKEN
+$extensionId = $env:ZENDESK_EXTENSION_ID
+
+if (-not $bearer) {
+    Write-Error "Error: Environment variable 'PAGERDUTY_BEARER_TOKEN' is not set."
+    Write-Error "Please set it before running this script (e.g., `$env:PAGERDUTY_BEARER_TOKEN = 'your_bearer_token')."
+    exit 1
+}
+
+if (-not $extensionId) {
+    Write-Error "Error: Environment variable 'ZENDESK_EXTENSION_ID' is not set."
+    Write-Error "Please set it before running this script (e.g., `$env:ZENDESK_EXTENSION_ID = 'your_extension_id')."
+    exit 1
+}
+
 function PagerDutyAPICall($csv) {
-$bearer="{FillThisInWithBearerFromStep3}" 
 $headers=@{}
 $headers.Add("Content-Type", "application/json")
 $headers.Add("Accept", "application/vnd.pagerduty+json;version=2")
@@ -48,7 +63,7 @@ $dirtybody = "{
     }
 }"
 $cleanbody = $dirtybody -replace '//','"'
-$response = Invoke-WebRequest -Uri 'https://zendesk-apps.pagerduty.com/api/connected_services?accounts_mapping_id={ThisIsTheIDOfZendeskExtension}' -Method POST -Headers $headers -ContentType 'application/json' -Body $cleanbody
+$response = Invoke-WebRequest -Uri "https://zendesk-apps.pagerduty.com/api/connected_services?accounts_mapping_id=$extensionId" -Method POST -Headers $headers -ContentType 'application/json' -Body $cleanbody
 write-host $response
 }
 
