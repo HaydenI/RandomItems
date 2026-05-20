@@ -37,6 +37,94 @@ To keep this repository clean, standardized, and command-line friendly, the foll
 
 ---
 
+## 🔒 Security & Credential Management
+
+To prevent sensitive credentials and API tokens from being stored in plain text or accidentally committed to version control, all automation scripts retrieve secrets dynamically from environment variables. 
+
+### 1. Standard Environment Variables
+
+Configure the following variables on your machine or deployment pipeline depending on which scripts you are executing:
+
+| Service | Environment Variable | Purpose | Used In |
+| :--- | :--- | :--- | :--- |
+| **PagerDuty** | `PAGERDUTY_TOKEN` | PagerDuty REST API Token | [`Update-EscalationPolicy.ps1`](pagerduty/Update-EscalationPolicy.ps1) |
+| **PagerDuty** | `PAGERDUTY_BEARER_TOKEN` | OAuth Bearer Token | [`New-ZendeskConnections.ps1`](pagerduty/mass-create-zendesk-connections/New-ZendeskConnections.ps1) |
+| **PagerDuty** | `ZENDESK_EXTENSION_ID` | Zendesk App Extension ID | [`New-ZendeskConnections.ps1`](pagerduty/mass-create-zendesk-connections/New-ZendeskConnections.ps1) |
+| **Zendesk** | `ZENDESK_EMAIL` | Admin account email | [`Set-UserTags.ps1`](zendesk/zendesk-support/Set-UserTags.ps1), [`Update-IvrSelection.ps1`](zendesk/zendesk-talk/Update-IvrSelection.ps1) |
+| **Zendesk** | `ZENDESK_TOKEN` | Zendesk API Token | [`Set-UserTags.ps1`](zendesk/zendesk-support/Set-UserTags.ps1), [`Update-IvrSelection.ps1`](zendesk/zendesk-talk/Update-IvrSelection.ps1) |
+| **PrintNode** | `PRINTNODE_EMAIL` | Account email username | [`printnode_cli_linux.py`](printnode/printnode_cli_linux.py) |
+| **PrintNode** | `PRINTNODE_PASSWORD` | Account password | [`printnode_cli_linux.py`](printnode/printnode_cli_linux.py) |
+| **PrintNode** | `PRINTNODE_COMPUTER_NAME` | (Optional) Computer name | [`printnode_cli_linux.py`](printnode/printnode_cli_linux.py) |
+
+> [!WARNING]
+> **Git Safety:** Always ensure your `.env` file is never tracked by git. A `.gitignore` has been pre-configured to block `.env` file commits.
+
+---
+
+### 2. How to Set Environment Variables
+
+#### ⚡ PowerShell (Windows & macOS/Linux)
+Set variables for the **current terminal session**:
+```powershell
+$env:PAGERDUTY_TOKEN = "your-api-token"
+$env:ZENDESK_EMAIL = "admin@example.com"
+$env:ZENDESK_TOKEN = "your-zendesk-api-token"
+```
+
+To set variables **permanently on Windows** (User Level):
+```powershell
+[System.Environment]::SetEnvironmentVariable("PAGERDUTY_TOKEN", "your-api-token", "User")
+```
+
+#### 🐚 Linux / Bash
+Set variables for the **current session**:
+```bash
+export PRINTNODE_EMAIL="admin@example.com"
+export PRINTNODE_PASSWORD="your-secure-password"
+```
+
+To set variables **permanently on Linux**, add the export commands to your shell profile (e.g., `~/.bashrc`, `~/.zshrc`).
+
+---
+
+### 3. Local Development with `.env` (Git-Ignored)
+
+For convenient local development, you can create a `.env` file in the root of this repository. 
+
+**Example `.env` file:**
+```ini
+# PagerDuty Credentials
+PAGERDUTY_TOKEN=pd_api_key_abc123
+PAGERDUTY_BEARER_TOKEN=bearer_abc123
+ZENDESK_EXTENSION_ID=extension_xyz789
+
+# Zendesk Credentials
+ZENDESK_EMAIL=admin@example.com
+ZENDESK_TOKEN=zd_token_xyz987
+
+# PrintNode Credentials
+PRINTNODE_EMAIL=printer-admin@example.com
+PRINTNODE_PASSWORD=super-secret-password
+PRINTNODE_COMPUTER_NAME=WarehousePrinterOffice
+```
+
+#### Loading `.env` in PowerShell
+Before executing scripts, load the `.env` file into your current session by running:
+```powershell
+if (Test-Path .env) {
+    Get-Content .env | ForEach-Object {
+        $line = $_.Trim()
+        if ($line -and !$line.StartsWith('#') -and $line.Contains('=')) {
+            $key, $value = $line -split '=', 2
+            [System.Environment]::SetEnvironmentVariable($key.Trim(), $value.Trim(), 'Process')
+        }
+    }
+    Write-Host "Local .env file loaded successfully." -ForegroundColor Green
+}
+```
+
+---
+
 ## 🛠️ Getting Started & Prerequisites
 
 ### 1. PowerShell Core & Microsoft Graph SDK
